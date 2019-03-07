@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
@@ -7,9 +7,14 @@ app = Flask(__name__)
 def homepage():
     return render_template('home.html')
 
-@app.route('/registration')
+@app.route('/registration', methods=['GET', 'POST'])
 def registration_page():
-    return render_template('registration.html')
+    if request.method == 'GET':
+        return render_template('registration.html')
+    if request.method == 'POST':
+        username = request.form['registrationUsername']
+        hash = database_common.hash_password(request.form['registrationPassword'])
+
 
 @app.route('/login')
 def login_page():
