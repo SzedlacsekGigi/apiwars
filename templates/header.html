@@ -1,0 +1,27 @@
+<header>
+<div class="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Planet list</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Voting statistics</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('registrate_user') }}">Registration</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login_user') }}">Login</a>
+                  </li>
+                    {%  if 'user_name' in session: %}
+                  <li class="nav-item">
+                    <a class="nav-item" id="username" style="color: #decbb1; font-size: 25px;position: absolute;margin-left: 57%;">Logged in as: {{ session['user_name'] }} <a class="nav-link" id="logout" href={{ url_for('logout_user') }}>Logout</a></a>
+                    {% else %}
+                    <a class="nav-link disabled">There is nobody logged in</a>
+                    {% endif %}
+                  </li>
+              </div>
+        </nav>
+    </div>
+</header>
